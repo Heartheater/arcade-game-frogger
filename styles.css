@@ -1,0 +1,14 @@
+﻿body{
+    text-align:center;
+    margin: 0;
+}
+
+#char{
+    position: fixed;
+    width: 70px;
+    height: auto;
+
+}
+img{
+    border: red 1px solid;
+}
