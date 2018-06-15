@@ -1,11 +1,13 @@
 "use strict";
 
+const canvas = document.getElementById("canvas");
+
 function Enemy(yMin, yMax) {
     this.x = -10;
     this.y = Math.floor(Math.random() * (yMax - yMin) + yMin);
     //dx is x velocity
     this.dx = Math.floor(Math.random() * (300 - 150) + 150);
-    this.dx = 3;
+    this.dx = 2;
     this.sprite = 'images/enemy-bug.png';
 
     this.render = function () {
@@ -18,18 +20,28 @@ function Enemy(yMin, yMax) {
         // You should multiply any movement by the dt parameter
         // which will ensure the game runs at the same speed for
         // all computers.
-        if (this.x < 505) {
+
+        let xArea = (this.x - player.x < 10) && (this.x - player.x > -3);
+        let yArea = (this.y - player.y < 72) && (this.y - player.y > -10);
+        if (this.x < canvas.width) {
             this.x += (this.dx);
-        } //idk im just wrappng the enemy back to the start
+        } 
+        else if ((xArea && yArea)) {
+            this.x = this.x;
+        }
         else {
+            //wrap enemy back to start
             this.x = -10;
         }
     };
 
     this.checkCollision = function () {
-        if ((this.x === player.x && this.y === player.y)) {
-            player.x = 200;
-            player.y = 400;
+        let xArea = (this.x - player.x < 50) && (this.x - player.x > -10);
+        let yArea = (this.y - player.y < 72) && (this.y - player.y > -10);
+        if (xArea && yArea) {
+            //reset player position
+            player.x = canvas.width / 2;
+            player.y = canvas.height - 150;
         }
     };
 
@@ -39,24 +51,24 @@ function Enemy(yMin, yMax) {
 //.......................................................................
 
 function Player(img) {
-    this.x = 200;
-    this.y = 400;
+    //set player starting point
+    this.x = canvas.width / 2;
+    this.y = canvas.height - 150;
     //movement speed
-    this.spd = 10;
+    this.spd = 6;
 
     this.playerImg = img;
-    //canvas width/height minus img w/h
-    this.xOffset = (505 - 101);
-    this.yOffset = (606 - 200);
-
+    //canvas width/height minus img width/height
+    this.xOffset = (canvas.width - 101);
+    this.yOffset = (canvas.height - 140);
     this.left;
     this.right;
     this.up;
     this.down;
 
+    //draw character
     this.render = function () {
-        //draw character
-        ctx.drawImage(Resources.get(this.playerImg), this.x, this.y);
+       ctx.drawImage(Resources.get(this.playerImg), this.x, this.y);
     }
 
     this.handleInput = function (keyCode, press) {
@@ -106,7 +118,7 @@ function Player(img) {
         else if ((this.down) && (this.y < this.yOffset)) {
             this.y += this.spd;
         }
-        else if ((this.up) && (this.y > -20)) {
+        else if ((this.up) && (this.y > 10)) {
             this.y -= this.spd;
         }
         checkWinning();
@@ -123,18 +135,25 @@ let allEnemies = [];
 
 function createEnemies(amount, min, max) {
     for (let i = 0; i < amount; ++i) {
+        min += (i * 20);
         allEnemies.push(new Enemy(min, max));
     }
 }//createEnemies end
 
-//the road area is between 50 - 220
-createEnemies(1, 50, 220);
 
+//upper road is between 120 - 235 px
+createEnemies(2, 120, 235);
+//bottom road area is between 365 - 480 px
+createEnemies(3, 365, 480);
+
+//check if player won
+//let gameWon = false;
 function checkWinning() {
     if (player.y < 5) {
-        alert("you won");
+        //gameWon = true;
+        console.log("you won");
     }
-}
+}//checkWinning end
 
 
 //listen for arrow key press and sends to player.handleInput()

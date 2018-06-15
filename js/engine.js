@@ -14,19 +14,15 @@
  */
 
 var Engine = (function (global) {
-    /* Predefine the variables we'll be using within this scope,
-     * create the canvas element, grab the 2D context for that canvas
-     * set the canvas elements height/width and add it to the DOM.
-     */
-    var doc = global.document,
+    const canvas = document.getElementById("canvas");
+    let doc = global.document,
         win = global.window,
-        canvas = doc.createElement('canvas'),
-        ctx = canvas.getContext('2d'),
+        ctx = canvas.getContext("2d"),
         lastTime;
 
-    canvas.width = 505;
-    canvas.height = 606;
-    doc.body.appendChild(canvas);
+
+    canvas.width = 604;
+    canvas.height = 746;
 
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
@@ -114,14 +110,16 @@ var Engine = (function (global) {
          */
         var rowImages = [
             'images/water-block.png',   // Top row is water
-            'images/stone-block.png',   // Row 1 of 3 of stone
-            'images/stone-block.png',   // Row 2 of 3 of stone
-            'images/stone-block.png',   // Row 3 of 3 of stone
-            'images/grass-block.png',   // Row 1 of 2 of grass
-            'images/grass-block.png'    // Row 2 of 2 of grass
+            'images/stone-block.png',   // Stone row
+            'images/stone-block.png',
+            'images/grass-block.png',   // grass row
+            'images/stone-block.png',   // stone row
+            'images/stone-block.png',   
+            'images/grass-block.png',   // grass Row
+            'images/grass-block.png',   
         ],
-            numRows = 6,
-            numCols = 5,
+            numRows = rowImages.length,
+            numCols = 6,
             row, col;
 
         // Before drawing, clear existing canvas
@@ -140,7 +138,7 @@ var Engine = (function (global) {
                  * so that we get the benefits of caching these images, since
                  * we're using them over and over.
                  */
-                ctx.drawImage(Resources.get(rowImages[row]), col * 101, row * 83);
+                ctx.drawImage(Resources.get(rowImages[row]), col * 100, row * 82);
             }
         }
 
