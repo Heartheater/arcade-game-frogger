@@ -2,8 +2,8 @@
 The objective of this game is to control the character to avoid all the enemies(bugs) and reach the water without being hit.
 
 ## Starting the Game
-Select a character by using the arrows on the screen.
-To start the game click the button that says "Start Game".
+Download the files and drag `main.html` into a browser screen to open the game.
+Select a character by using the arrows on the screen and click "start game" to start.
 
 ## Controls
 You can use the arrow keys or WASD keys to move the character. 
