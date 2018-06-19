@@ -1,6 +1,7 @@
 body {
     text-align: center;
     margin: 0;
+    font-family: Arial;
 }
 
 .score-container {
@@ -8,23 +9,24 @@ body {
     width: 780px;
     top: 58px;
 }
-@media screen and (min-width: 1299px){
-    .score-container{
-        width: 70%;
-    }
-}
-
-@media screen and (max-width: 1264px){
-    .score-container {
-        width: 60%;
-    }
-}
 
 .score{
     color: #ececec;
     font-weight: bold;
     font-size: 18px;
     text-shadow: 0px 0px 3px black;
+}
+
+@media screen and (min-width: 1189px) {
+    .score-container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1264px) {
+    .score-container {
+        width: 60%;
+    }
 }
 
 #select-screen {
@@ -37,12 +39,13 @@ body {
     position: fixed;
     width: 18%;
     margin: 0 10px;
+    font-weight: bold;
 }
 
 #char-select {
-    top: 15%;
-    width: 70%;
-    height: 70%;
+    top: 16%;
+    width: 60%;
+    height: 65%;
     position: fixed;
     z-index: 2;
     color: rgb(53, 50, 77);
@@ -52,7 +55,7 @@ body {
 }
 
 #select-header {
-    margin-top: 8%;
+    margin-top: 6%;
     font-size: 45px;
 }
 
@@ -63,6 +66,7 @@ button {
 button:hover{
     cursor: pointer;
 }
+
 #char-preview {
     width: 150px;
 }
@@ -89,7 +93,7 @@ button:hover{
 
 #start-button {
     position: relative;
-    margin: 7% auto;
+    margin: 4% auto;
     color: rgb(53, 50, 77);
     border-radius: 5px;
     font-size: 22px;
@@ -112,7 +116,7 @@ button:hover{
     margin: 18px 0;
 }
 
-#replay {
+.replay {
     position: relative;
     color: rgb(53, 50, 77);
     border-radius: 5px;
@@ -122,3 +126,4 @@ button:hover{
     background-color: steelblue;
     color: aliceblue;
 }
+

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Effective JavaScript: Frogger</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -9,23 +10,19 @@
     <div id="select-screen">
         <div id="char-select">
             <p id="select-header">Character Select </p>
-            <p class="info"> 
-                WASD or Arrow keys to move. 
-                <br /><br />To win you must get a score of 100. 
+            <p class="info">
+                WASD or Arrow keys to move.
+                <br /><br />To win you must get a score of 100.
                 <br /><br />The score goes up when you reach the water, but will reset if you're hit.
                 <br /><br />You'll get faster once you have a score of at least 50.
             </p>
             <img id="char-preview" src="images/char-boy.png" alt="boy" />
-
             <div id="arrows">
                 <button type="submit" id="backward-select"><img src="images/left-arrow.png" alt="left arrow" /> </button>
                 <button type="submit" id="forward-select"><img src="images/right-arrow.png" alt="right arrow" /> </button>
             </div>
-
             <button type="submit" id="start-button">Start Game</button>
-
         </div>
-
     </div>
 
 
@@ -35,7 +32,7 @@
 
     <div id="win">
         <p>You won!</p>
-        <button id="replay">Play Again?</button>
+        <button class="replay">Play Again?</button>
     </div>
 
     <canvas id="canvas"></canvas>
